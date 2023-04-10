@@ -1,1 +1,3 @@
-# DBS311-Practice-Notes-and-Assignments
+# DBS311 Practice Notes and Assignments
+This repository consists of all the practice files that I used to learn database concepts in the course DBS311 which I took as a student at Seneca College.
+It contains all the questions that we covered as a part of our assignments and labs that I completed this semester. Furthermore, I have also provided my written notes which cover all the topic that are taught in this course and have been a huge help throughout the course.
