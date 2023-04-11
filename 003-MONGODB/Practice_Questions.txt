@@ -37,22 +37,22 @@ Q12) Show only existing class IDs in the grades collection. (Do not show duplica
 Ans) db.grades.distinct("class_id")
 
 Q13) Write a query to group the type of scores and display the total types in each student document
-Ans)
+Ans) NOT DONE YET
 
 Q14) Write a query to show the maximum and the minimum class ID for each grade student. Sort the result based on student ID from low to high. Show only the first 10 grades student.
-Ans)
+Ans) db.grades.aggregate([{$group: {_id: {"student_id": "$student_id"}, "max_class_id": {$max: "$class_id"}, "min_class_id": {$min: "$class_id"}}}, {$sort: {_id: 1}}, {$limit: 10}])
 
 Q15) Write a query to find the number of failed exams for student with ID 48.
-Ans)
+Ans) NOT DONE YET
 
 Q16) Write a query to multiply the list price by 1000 and display the given list price in products collection and the newly calculated list price.
-Ans)
+Ans) db.products.aggregate({$project: {_id: 0, list_price: 1, new_list_price: {$multiply: ["$list_price", 1000]}}})
 
 Q17) Write a query to find how many years each employee has worked in the company
-Ans) 
+Ans) db.employees.aggregate({$project: {_id: 0, years_worked: {$subtract: [{$year: new Date()}, {$year: "$hire_date"}]}}})
 
 Q18) Write a query to display existing email and newly created email of combining first 2 characters of first name and last name together as f2.lastname@seneca.ca in employees collection.
-Ans)
+Ans) db.employees.aggregate({ $project: { _id: 0, email: {$toLower: { $concat: [{ $substr: ["$first_name", 0, 2] }, ".", "$last_name", "@seneca.ca"] } } }})
 
 Q19) Write a query to display the list price of products collect and using conditional operator display a discount of $100 if the list price of products collection is above $400 and or else $0 otherwise.
-Ans)
+Ans) NOT DONE YET
