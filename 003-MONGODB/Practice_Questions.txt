@@ -56,3 +56,25 @@ Ans) db.employees.aggregate({ $project: { _id: 0, email: {$toLower: { $concat: [
 
 Q19) Write a query to display the list price of products collect and using conditional operator display a discount of $100 if the list price of products collection is above $400 and or else $0 otherwise.
 Ans) NOT DONE YET
+
+Q20) Write a Mongo query to sort the display of books collection with author name in ascending and titles in descending order. Show the Output from Mongo
+Write a Mongo query to search for an authorname using your firstname.
+Ans)
+
+Q21) Write a mongo query to display the minimum, maximum and average number of copies in books collection grouped by author name. Show the Output from Mongo.
+Ans)
+
+Q22) Write a mongo query to display the book collections published date as the following
+    PublishedinMonth:
+    PublishedinDay
+    PublishedinYear:
+Ans) 
+
+Q23) Write a mongo query to update the book collection with the number of copies to 100 for the book title “The Great Gatsby“. Make sure to retain the previous information for this document. Display the newly updated information.
+Ans)
+
+Q24) Write a mongo query to display the book names whose number of copies are in the range between 60 to 80. Display the results.
+Ans)
+
+Q25) Write  a mongo query to create a new database called books and insert the following books collection according to their datatypes. Write a mongo query to display the book collection with just the book title and author name. Remember to insert the values according to their data types. (PS: Drop any previous database called books). Display the data that is inserted in a pretty format.
+Ans)
