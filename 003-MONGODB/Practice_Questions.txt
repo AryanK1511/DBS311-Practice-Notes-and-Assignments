@@ -59,22 +59,54 @@ Ans) NOT DONE YET
 
 Q20) Write a Mongo query to sort the display of books collection with author name in ascending and titles in descending order. Show the Output from Mongo
 Write a Mongo query to search for an authorname using your firstname.
-Ans)
+Ans) db.books.aggregate([{$project: {_id: 0, authorName: 1, bookTitle: 1}}, {$sort: {authorName: 1, bookTitle: -1}}])
+    db.books.find({authorName: "Aryan"})
 
 Q21) Write a mongo query to display the minimum, maximum and average number of copies in books collection grouped by author name. Show the Output from Mongo.
-Ans)
+Ans) db.books.aggregate({$group: {_id: "$authorName", max_copies: {$max: "$numOfCopies"}, min_copies: {$min: "$numOfCopies"}, avg_copies: {$avg: "$numOfCopies"}}})
 
 Q22) Write a mongo query to display the book collections published date as the following
     PublishedinMonth:
     PublishedinDay
     PublishedinYear:
-Ans) 
+Ans) db.books.aggregate({$project: {publishedInMonth: {$month: "$publishedYear"}, publishedInDay: {$dayOfMonth: "$publishedYear"}, publishedInYear: {$year: "$publishedYear"}}})
 
 Q23) Write a mongo query to update the book collection with the number of copies to 100 for the book title “The Great Gatsby“. Make sure to retain the previous information for this document. Display the newly updated information.
-Ans)
+Ans) db.books.updateOne({bookTitle: "The Great Gatsby"}, {$set: {numOfCopies: 100}})
 
 Q24) Write a mongo query to display the book names whose number of copies are in the range between 60 to 80. Display the results.
-Ans)
+Ans) db.books.find({numOfCopies: {$gte: 60, $lte: 80}}, {_id: 0, bookTitle: 1})
 
 Q25) Write  a mongo query to create a new database called books and insert the following books collection according to their datatypes. Write a mongo query to display the book collection with just the book title and author name. Remember to insert the values according to their data types. (PS: Drop any previous database called books). Display the data that is inserted in a pretty format.
-Ans)
+Ans) db.books.insertMany([
+    {
+        bookID: 111,
+        bookTitle: "The Catcher in the Rye",
+        publishedYear: new Date("1977-03-02"),
+        authorName: "J.D. Salinger",
+        numOfCopies: 20
+    },
+    {
+        bookID: 222,
+        bookTitle: "Nine Stories",
+        publishedYear: new Date("1981-04-20"),
+        authorName: "F. Scott. Fitzgerald",
+        numOfCopies: 60
+    },
+    {
+        bookID: 333,
+        bookTitle: "Franny and Zooey",
+        publishedYear: new Date("1949-02-09"),
+        authorName: "Jane Austen",
+        numOfCopies: 70
+    },
+    {
+        bookID: 444,
+        bookTitle: "The Great Gatsby",
+        publishedYear: new Date("1955-04-05"),
+        authorName: "F. Scott. Fitzgerald",
+        numOfCopies: 80
+    }
+])
+
+db.books.find({}, {_id: 0, bookTitle: 1, authorName: 1}).pretty();
