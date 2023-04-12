@@ -108,5 +108,3 @@ Ans) db.books.insertMany([
         numOfCopies: 80
     }
 ])
-
-db.books.find({}, {_id: 0, bookTitle: 1, authorName: 1}).pretty();
